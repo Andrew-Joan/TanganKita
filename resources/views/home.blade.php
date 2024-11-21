@@ -1,58 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TanganKita</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-gray-100">
-    <header class="flex items-center justify-between px-10 py-5 bg-white shadow">
-        <div class="text-xl font-bold text-blue-500">tangankita</div>
-        <nav class="space-x-6">
-            <a href="#" class="text-gray-600 hover:text-blue-500">Home</a>
-            <a href="#" class="text-gray-600 hover:text-blue-500">About</a>
-            <a href="#" class="text-gray-600 hover:text-blue-500">Donation</a>
-            <a href="#" class="text-gray-600 hover:text-blue-500">Blog</a>
-            <a href="#" class="text-gray-600 hover:text-blue-500">Contact</a>
-        </nav>
-        <div class="space-x-4">
-            <button class="px-5 py-2 text-blue-500 border border-blue-500 rounded-full hover:bg-blue-100">Sign in</button>
-            <button class="px-5 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600">Sign up</button>
-        </div>
-    </header>
-    <main class="px-10 py-20">
-        <section class="flex items-center mx-auto my-14 max-w-7xl">
-            <div class="w-1/2 px-10 mr-40 space-y-6">
-                <h1 class="text-5xl font-bold text-gray-900">
-                    Donasi adalah tentang membuat <span class="text-blue-500">perubahan.</span>
+@extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('content')
+<div class="d-flex flex-column min-vh-100">
+    <!-- Main Content -->
+    <main class="container py-5 flex-grow-1 d-flex justify-content-center align-items-center">
+        <div class="row align-items-center w-100">
+            <!-- Left Section -->
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold text-dark">
+                    Donasi adalah tentang membuat <span class="text-primary">perubahan</span>.
                 </h1>
-                <p class="text-lg text-gray-600">
+                <p class="mt-4 fs-5 text-muted">
                     Setiap kontribusi, sekecil apa pun, memiliki kekuatan untuk mengubah hidup seseorang.
                     Dengan memberikan, kita menjadi bagian dari solusi dan harapan bagi mereka yang membutuhkan.
                 </p>
-                <button class="px-6 py-3 text-lg text-white bg-blue-500 rounded hover:bg-blue-600">
-                    Donasi Sekarang
-                </button>
+                <button class="mt-3 btn btn-primary btn-lg">Donasi Sekarang</button>
             </div>
-            <div class="w-1/3 p-8 space-y-6 bg-white rounded shadow-lg">
-                <h2 class="text-xl font-bold text-gray-900">Jumlah Donasi</h2>
-                <div class="flex items-center space-x-4">
-                    <button class="w-1/2 px-4 py-2 text-white bg-blue-500 rounded">One-time</button>
-                    <button class="w-1/2 px-4 py-2 text-blue-500 border border-blue-500 rounded">Weekly</button>
+
+            <!-- Right Section -->
+            <div class="col-md-5 offset-md-1">
+                <div class="shadow-lg card">
+                    <div class="card-body">
+                        <h2 class="mb-4 h5 fw-bold">Jumlah Donasi</h2>
+                        <!-- Toggle Buttons -->
+                        <div class="mb-3 btn-group w-100">
+                            <button class="btn btn-primary">One-time</button>
+                            <button class="btn btn-outline-primary">Weekly</button>
+                        </div>
+                        <!-- Donation Amount Options -->
+                        <div class="row g-2">
+                            <div class="col-4"><button class="btn btn-light w-100">500 Ks</button></div>
+                            <div class="col-4"><button class="btn btn-light w-100">1000 Ks</button></div>
+                            <div class="col-4"><button class="btn btn-light w-100">2000 Ks</button></div>
+                            <div class="col-4"><button class="btn btn-light w-100">5000 Ks</button></div>
+                            <div class="col-4"><button class="btn btn-light w-100">10000 Ks</button></div>
+                            <div class="col-4"><button class="btn btn-light w-100">50000 Ks</button></div>
+                        </div>
+                        <!-- Custom Amount Input -->
+                        <input type="text" class="mt-3 form-control" placeholder="Custom Amount">
+                        <!-- Submit Button -->
+                        <button class="mt-3 btn btn-primary w-100">Donasi Sekarang</button>
+                    </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <button class="px-4 py-2 text-gray-800 bg-gray-100 rounded hover:bg-blue-100">500 Ks</button>
-                    <button class="px-4 py-2 text-gray-800 bg-gray-100 rounded hover:bg-blue-100">1000 Ks</button>
-                    <button class="px-4 py-2 text-gray-800 bg-gray-100 rounded hover:bg-blue-100">2000 Ks</button>
-                    <button class="px-4 py-2 text-gray-800 bg-gray-100 rounded hover:bg-blue-100">5000 Ks</button>
-                    <button class="px-4 py-2 text-gray-800 bg-gray-100 rounded hover:bg-blue-100">10000 Ks</button>
-                    <button class="px-4 py-2 text-gray-800 bg-gray-100 rounded hover:bg-blue-100">50000 Ks</button>
-                </div>
-                <input type="text" placeholder="Custom Amount" class="w-full px-4 py-2 border rounded">
-                <button class="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">Donasi Sekarang</button>
             </div>
-        </section>
+        </div>
     </main>
-</body>
-</html>
+
+    <!-- Footer -->
+    <footer class="py-3 text-center bg-white">
+        <p>&copy; 2024 Tangankita. All rights reserved.</p>
+    </footer>
+
+</div>
+@endsection
