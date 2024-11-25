@@ -1,6 +1,6 @@
 <header class="bg-white shadow-sm">
     <div class="container py-3 d-flex justify-content-between align-items-center">
-        <div class="fs-4 fw-bold text-primary">tangankita</div>
+        <div class="fs-4 fw-bold logo">tangankita</div>
         <nav class="d-flex align-items-center">
             <a href="/" class="mx-4 text-secondary">Home</a>
             <a href="/about" class="mx-4 text-secondary">About</a>
