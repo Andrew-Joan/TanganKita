@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->timestamp('end_date');
             $table->integer('participants');
+            $table->integer('target');
             $table->text('description');
             $table->string('image')->nullable();
             $table->timestamps();

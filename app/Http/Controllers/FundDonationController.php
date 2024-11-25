@@ -12,7 +12,12 @@ class FundDonationController extends Controller
      */
     public function index()
     {
-        //
+        $allFundDonations = FundDonation::paginate(6, ['*'], 'allFundDonations');
+        $disasterDonations = FundDonation::where('category_id', 1)->paginate(6, ['*'], 'disasterDonations');
+        $educationDonations = FundDonation::where('category_id', 2)->paginate(6, ['*'], 'educationDonations');
+        $healthDonations = FundDonation::where('category_id', 3)->paginate(6, ['*'], 'healthDonations');
+
+        return view('fund-donation.index', compact('allFundDonations', 'disasterDonations', 'educationDonations', 'healthDonations'));
     }
 
     /**

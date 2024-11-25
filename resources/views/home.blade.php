@@ -53,11 +53,5 @@
             </div>
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="py-3 text-center bg-white">
-        <p>&copy; 2024 Tangankita. All rights reserved.</p>
-    </footer>
-
 </div>
 @endsection
