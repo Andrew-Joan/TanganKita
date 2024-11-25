@@ -1,0 +1,20 @@
+.quote{
+    font-size: 70px;
+    font-weight: bolder;
+    padding-bottom: 2rem;
+}
+
+.desc{
+    padding-bottom: 2rem;
+}
+
+.judul{
+    text-align: center;
+    font-size: 30px;
+    padding: 2rem 2rem;
+}
+
+.container{
+    background-image: url('images/form.svg');
+    background-size: cover;
+}

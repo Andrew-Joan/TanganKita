@@ -10,4 +10,9 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Route::get('/', function () {
+//     return "halo";
+// });
+
+
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
