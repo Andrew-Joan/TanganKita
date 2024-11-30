@@ -71,3 +71,7 @@ button.btn, a.btn {
     color: #1A8FE3;
     font-weight: 900;
 }
+
+.invalid-feedback {
+    font-size: 12px;
+}

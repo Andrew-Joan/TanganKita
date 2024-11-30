@@ -4,7 +4,8 @@
     <div style="height: 100vh;" class="container d-flex justify-content-center align-items-center">
         <div class="row align-items-center shadow-lg rounded-4" style="width:900px;height:550px;">
             <div class="col-md-6 d-flex justify-content-center">
-                <form class="d-flex flex-column" style="width:90%;">
+                <form action="{{ route('login.attempt') }}" method="POST" id="loginForm" class="d-flex flex-column" style="width:90%;">
+                    @csrf
                     <div class="fw-bold logo text-center mb-4 fs-2">tangankita</div>
                     <div class="mb-3">
                       <label for="email" class="form-label">Alamat E-mail</label>
@@ -30,4 +31,9 @@
             </div>
         </div>
     </div>
+
+    {!! JsValidator::formRequest(
+        'App\Http\Requests\LoginRequest',
+        Crypt::encrypt(['selector' => '#loginForm', 'need_loading' => true]),
+    ) !!}
 @endsection

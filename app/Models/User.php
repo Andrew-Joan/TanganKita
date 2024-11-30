@@ -37,7 +37,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'dob' => 'datetime',
+            'date_of_birth' => 'datetime',
             'password' => 'hashed',
         ];
     }

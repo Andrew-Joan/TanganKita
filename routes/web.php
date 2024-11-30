@@ -9,11 +9,18 @@ use App\Http\Controllers\FundDonationController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'attemptLogin'])->name('login.attempt');
+Route::controller(LoginController::class)->group(function() {
+    Route::middleware('guest')->group(function() {
+        Route::get('/login', 'login')->name('login');
+        Route::post('/login', 'attemptLogin')->name('login.attempt');
+    });
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
+
 
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/register', [RegisterController::class, 'attemptRegister'])->name('register.attempt');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/about-us', function() {
     return view('about-us');
