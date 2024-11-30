@@ -28,7 +28,7 @@ p {
     color: black;
 }
 
-button.btn {
+button.btn, a.btn {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 400;
     letter-spacing: 0.5px;
@@ -70,4 +70,8 @@ button.btn {
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: #1A8FE3;
     font-weight: 900;
+}
+
+.invalid-feedback {
+    font-size: 12px;
 }

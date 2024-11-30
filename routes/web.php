@@ -2,14 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FundDonationController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::controller(LoginController::class)->group(function() {
+    Route::middleware('guest')->group(function() {
+        Route::get('/login', 'login')->name('login');
+        Route::post('/login', 'attemptLogin')->name('login.attempt');
+    });
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
+
+
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/about-us', function() {
     return view('about-us');
