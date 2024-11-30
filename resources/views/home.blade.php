@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="d-flex flex-column min-vh-100 container">
+<div class="d-flex flex-column min-vh-100 container pb-5">
     <!-- Main Content -->
     <main class="container py-5 flex-grow-1 d-flex justify-content-center align-items-center">
         <div class="row align-items-center">
