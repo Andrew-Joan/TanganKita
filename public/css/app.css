@@ -7,6 +7,11 @@ body, html {
     font-weight: 600;
 }
 
+body {
+    background-image: url('../images/home-background.jpg');
+    background-size: cover;
+}
+
 a {
     text-decoration: none;
 }
@@ -29,6 +34,14 @@ button.btn {
     letter-spacing: 0.5px;
     border-radius: 5rem;
     padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.bg-primary {
+    background-color: #1A8FE3 !important;
+}
+
+.text-primary {
+    color: #1A8FE3 !important;
 }
 
 .btn-outline-primary {

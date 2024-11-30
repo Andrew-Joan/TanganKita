@@ -17,13 +17,12 @@
     @include('layouts.navbar')
 
     <!-- Main Content -->
-    <main class="py-3">
+    <main class="position-relative">
         @yield('content')
+        <footer class="position-absolute bottom-0 start-50 translate-middle-x">
+            <p>&copy; 2024 Tangankita. All rights reserved.</p>
+        </footer>
     </main>
-
-    <footer class="py-3 text-center bg-white">
-        <p>&copy; 2024 Tangankita. All rights reserved.</p>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>

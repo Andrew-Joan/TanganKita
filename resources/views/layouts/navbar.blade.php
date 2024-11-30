@@ -3,7 +3,7 @@
         <div class="fs-4 fw-bold logo">tangankita</div>
         <nav class="d-flex align-items-center">
             <a href="/" class="mx-4 text-secondary">Home</a>
-            <a href="/about" class="mx-4 text-secondary">About</a>
+            <a href="/about-us" class="mx-4 text-secondary">About</a>
             <div class="dropdown mx-4">
                 <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Donation
