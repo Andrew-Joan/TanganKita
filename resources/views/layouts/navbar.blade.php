@@ -18,8 +18,8 @@
             <a href="/contact" class="mx-4 text-secondary">Contact</a>
         </nav>
         <div>
-            <button class="btn btn-outline-primary me-4">Sign in</button>
-            <button class="btn btn-primary">Sign up</button>
+            <a href="{{ route('login') }}" class="btn btn-outline-primary me-4">Masuk</a>
+            <a href="{{ route('register') }}" class="btn btn-primary">Daftar</a>
         </div>
     </div>
 </header>
