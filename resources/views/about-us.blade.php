@@ -14,7 +14,7 @@
           <i class="fa-solid fa-hand-holding-dollar fa-4x text-primary mb-2 mt-3"></i>
           <h5 class="fw-bold my-4 text-primary">Donasi</h5>
           <p class="text-muted">Menyediakan bantuan berupa uang bagi orang yang membutuhkan.</p>
-          <a href="#" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Learn More</a>
+          <a href="{{ route('fund-donation.index') }}" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Learn More</a>
         </div>
       </div>
       <div class="col-md-4 text-center">

@@ -10,9 +10,10 @@ use App\Http\Controllers\FundDonationController;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('/about-us', function() {
     return view('about-us');
-})->name('home');
+})->name('about-us');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
