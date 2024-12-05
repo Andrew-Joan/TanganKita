@@ -24,18 +24,18 @@
                     <div class="row mb-3">
                         <div class="col-6">
                             <label class="form-label text-dark">Target Donasi (Dalam Rupiah)</label>
-                            <p class="form-control-plaintext fw-bold">Rp{{ number_format($donation->target, 0, ',', '.') }}</p>
+                            <p class="form-control-plaintext fw-bold text-primary">Rp{{ number_format($donation->target, 0, ',', '.') }}</p>
                         </div>
                         <div class="col-6">
                             <label class="form-label text-dark">Donasi Terkumpul</label>
-                            <p class="form-control-plaintext fw-bold">Rp{{ number_format($donation->amount, 0, ',', '.') }}</p>
+                            <p class="form-control-plaintext fw-bold text-success">Rp{{ number_format($donation->amount, 0, ',', '.') }}</p>
                         </div>
                     </div>
                     <hr>
                     <div class=" row mb-3">
                         <div class="col-6">
                             <label class="form-label text-dark">Tanggal Berakhir</label>
-                            <p class="form-control">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $donation->end_date)->format('d F Y') }}</p>
+                            <p class="form-control-plain-text text-danger fw-bold">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $donation->end_date)->format('d F Y') }}</p>
                         </div>
                         <div class="col-6">
                             <label for="donation_amount" class="form-label text-dark">Jumlah Donasi (Dalam Rupiah)</label>
