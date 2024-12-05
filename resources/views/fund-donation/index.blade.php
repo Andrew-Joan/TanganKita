@@ -9,7 +9,13 @@
             </div>
 
             <div class="mb-4">
-                <h4 class="mb-3">KATEGORI</h4>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="m-0">KATEGORI</h4>
+                    @auth
+                        <a class="btn btn-outline-success rounded-3 px-2" data-bs-toggle="modal" data-bs-target="#createFundDonation">Buka Donasi Uang</a>
+                        @include('fund-donation.modals.create')
+                    @endauth
+                </div>
 
                 <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">

@@ -27,11 +27,13 @@ class FundDonationSeeder extends Seeder
             DB::table('fund_donations')->insert([
                 'title' => $faker->sentence(5),
                 'category_id' => rand(1, 3),
-                'image' => $faker->imageUrl(640, 480, 'animals', true),
+                'image' => null,
                 'user_id' => rand(1, 10),
                 'amount' => $amount,
                 'target' => $target,
                 'description' => $faker->paragraph(2),
+                'status' => 1,
+                'start_date' => now(),
                 'end_date' => $faker->dateTimeBetween('+1 week', '+1 month')->format('Y-m-d')
             ]);
         }

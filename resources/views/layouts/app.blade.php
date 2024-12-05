@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('page-css')
 
+    {{-- Jquery cdn --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    {{-- Trix css & js --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 </head>
 <body class="bg-white">
     <!-- Navbar -->
