@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FundDonationController;
+use App\Http\Controllers\VolunteerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -17,6 +18,13 @@ Route::controller(LoginController::class)->group(function() {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
+Route::get('/volunteer', function() {
+    return view('volunteer');
+})->name('volunteer');
+
+Route::get('/volunteer', [VolunteerController::class, 'index'])->name('volunteer.index');
+Route::get('volunteerRegister/{activity}', [VolunteerController::class, 'showRegistrationForm'])->name('volunteer.register');
+Route::post('volunteerRegister', [VolunteerController::class, 'store'])->name('volunteer.store');
 
 
 Route::get('/register', [RegisterController::class, 'register'])->name('register');

@@ -12,8 +12,19 @@ class VolunteerController extends Controller
      */
     public function index()
     {
-        //
+        return view('volunteer');
     }
+
+    public function showRegistrationForm()
+    {
+        return view('volunteerRegister');
+    }
+
+    public function register(Request $request)
+    {
+
+    }
+
 
     /**
      * Show the form for creating a new resource.

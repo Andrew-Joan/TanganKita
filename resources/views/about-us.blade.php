@@ -30,7 +30,7 @@
 						<i class="fa-solid fa-handshake-angle fa-4x text-primary mb-2 mt-3"></i>
 						<h5 class="fw-bold my-4 text-primary">Sukarelawan</h5>
 						<p class="text-muted">Mendukung secara langsung dengan tenaga serta waktu..</p>
-						<a href="#" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Learn More</a>
+						<a href="{{ route('volunteer.index') }}" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Learn More</a>
 					</div>
 				</div>
 			</div>
