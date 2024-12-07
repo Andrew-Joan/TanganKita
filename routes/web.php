@@ -23,9 +23,6 @@ Route::get('/volunteer', function() {
 })->name('volunteer');
 
 Route::get('/volunteer', [VolunteerController::class, 'index'])->name('volunteer.index');
-Route::get('volunteerRegister/{activity}', [VolunteerController::class, 'showRegistrationForm'])->name('volunteer.register');
-Route::post('volunteerRegister', [VolunteerController::class, 'store'])->name('volunteer.store');
-
 
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
