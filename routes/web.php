@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FundDonationController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\FundDonationController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
