@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FundDonationController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -34,3 +35,5 @@ Route::prefix('fund-donation')
     ->group(function () {
         Route::get('/', 'index')->name('index');
     });
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
