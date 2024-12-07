@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\FundDonation;
-use Illuminate\Http\Request;
+use App\Http\Requests\Donation\DonateFundRequest;
+use Illuminate\Foundation\Http\FormRequest as Request;
+use App\Http\Requests\FundDonation\CreateFundDonationRequest;
+use App\Models\FundTransaction;
 
 class FundDonationController extends Controller
 {
@@ -17,23 +21,28 @@ class FundDonationController extends Controller
         $educationDonations = FundDonation::where('category_id', 2)->paginate(6, ['*'], 'educationDonations');
         $healthDonations = FundDonation::where('category_id', 3)->paginate(6, ['*'], 'healthDonations');
 
-        return view('fund-donation.index', compact('allFundDonations', 'disasterDonations', 'educationDonations', 'healthDonations'));
-    }
+        $categories = Category::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('fund-donation.index', compact(
+            'allFundDonations',
+            'disasterDonations',
+            'educationDonations',
+            'healthDonations',
+            'categories'
+        ));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateFundDonationRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        $validatedData['image'] = $request->storeImage();
+
+        FundDonation::create($validatedData);
+
+        return back()->with('success', 'Kampanye Donasi Uang berhasil ditambahkan, menunggu verifikasi dari admin');
     }
 
     /**
@@ -66,5 +75,23 @@ class FundDonationController extends Controller
     public function destroy(FundDonation $fundDonation)
     {
         //
+    }
+
+    public function donateFund(DonateFundRequest $request)
+    {
+        $validatedData = $request->validated();
+        $validatedData['fund_donation_id'] = $validatedData['donation_id'];
+        unset($validatedData['donation_id']);
+
+        $donation = FundDonation::find($validatedData['fund_donation_id']);
+        $donation->amount += $validatedData['amount'];
+        $donation->updated_at = now();
+        if ($donation->amount >= $donation->target)
+            $donation->status = 2;
+        $donation->save();
+
+        FundTransaction::create($validatedData);
+
+        return back()->with('success', 'Donasi Uang sebesar Rp. ' . number_format($validatedData['amount'], 0, ',', '.') . ' berhasil dilakukan, kami berterima kasih atas bantuan yang anda berikan.');
     }
 }

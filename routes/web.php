@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FundDonationController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VolunteerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -18,7 +18,11 @@ Route::controller(LoginController::class)->group(function() {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
+Route::get('/volunteer', function() {
+    return view('volunteer');
+})->name('volunteer');
 
+Route::get('/volunteer', [VolunteerController::class, 'index'])->name('volunteer.index');
 
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -34,6 +38,8 @@ Route::prefix('fund-donation')
     ->controller(FundDonationController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
+        Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware('auth.redirect');
     });
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

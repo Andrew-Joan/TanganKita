@@ -2,12 +2,17 @@
     @foreach ($allFundDonations as $allFundDonation)
         @php
             $percentage = ceil($allFundDonation->amount / $allFundDonation->target * 100);
+            // modalId di all category beda dari yang lain karena kalo dibuat donate-fund-{id} juga, bakal error karena bakal ada 2 modal dengan id yg sama.
+            $modalId = 'all-categories-donate-fund-' . $allFundDonation->id; 
         @endphp
         <div class="col-md-3 shadow rounded-4 py-2 border">
             <div class="campaign-card">
                 <div class="p-3">
-                    <img class="object-fit-cover w-100 rounded-3" src="https://via.placeholder.com/300x200" alt="Campaign Image">
-                
+                    @if ($allFundDonation->image != null)
+                        <img class="object-fit-cover w-100 rounded-3" src="{{ asset('storage/' . $allFundDonation->image) }}" alt="Campaign Image" style="width: 300px; height:200px;">
+                    @else
+                        <img class="object-fit-cover w-100 rounded-3" src="https://via.placeholder.com/300x200" alt="Campaign Image">
+                    @endif                
                     <div class="text-body-tertiary fw-medium py-2 small">{{ $allFundDonation->category->name }}</div>
                     <h5>{{ $allFundDonation->title }}</h5>
                     <div class="d-flex align-items-center my-3" style="width: 100%;">
@@ -18,7 +23,8 @@
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center mt-2">
-                        <a href="#" class="btn btn-outline-primary rounded-pill px-4">Donate Now</a>
+                        <a href="#" class="btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Donate Now</a>
+                        @include('fund-donation.modals.donate-fund', ['donation' => $allFundDonation, 'modalId' => $modalId])
                     </div>
                 </div>
             </div>
