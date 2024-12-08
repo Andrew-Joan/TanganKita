@@ -90,7 +90,7 @@ class FundDonationController extends Controller
         $donation->amount += $validatedData['amount'];
         $donation->updated_at = now();
         if ($donation->amount >= $donation->target)
-            $donation->status = 2;
+            $donation->status_id = 5;
         $donation->save();
 
         FundTransaction::create($validatedData);

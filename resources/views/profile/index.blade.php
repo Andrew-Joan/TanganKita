@@ -2,6 +2,10 @@
 
 @section('title', 'profil')
 
+@section('page-css')
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endsection
+
 @section('content')
 <div class="container py-5">
     <div class="row g-4">
@@ -77,45 +81,46 @@
         </div>
     </div>
 
-    <div class="col-lg-12 mt-4">
-        <h4 class="fw-bold text-center mb-4">Riwayat Donasi</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover align-middle text-center">
-                <thead class="table-primary">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Kampanye</th>
-                        <th>Jumlah Donasi</th>
-                        <th>Tanggal Donasi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>donasi</td>
-                        <td>Rp 100.000</td>
-                        <td>01 Jan 2024</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>donasi b</td>
-                        <td>Rp 200.000</td>
-                        <td>15 Jan 2024</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>donasi c</td>
-                        <td>Rp 50.000</td>
-                        <td>20 Jan 2024</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>donasi d</td>
-                        <td>Rp 150.000</td>
-                        <td>25 Jan 2024</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="card my-3 py-2 shadow mt-5">
+        <div class="card-body">
+            <h4 class="fw-bold text-center">Riwayat Donasi</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="datatable-fund-donation-history" width="100%">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>Nama Kampanye</th>
+                            <th>Kategori Donasi</th>
+                            <th>Jumlah Donasi</th>
+                            <th>Tanggal Donasi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card my-3 py-2 shadow mt-5">
+        <div class="card-body">
+            <h4 class="fw-bold text-center">Riwayat Kegiatan Relawan</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="datatable-volunteer-history" width="100%">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>Nama Kegiatan Relawan</th>
+                            <th>Kategori Kegiatan</th>
+                            <th>Tanggal Masuk</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -123,37 +128,80 @@
 </div>
 @endsection
 
-@section('styles')
-<style>
-        .profile-picture img {
-        border: 3px solid #dee2e6;
-        transition: all 0.3s ease-in-out;
-    }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+       initDatatable();
+    });
 
-    .profile-picture img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+    function initDatatable() {
+        $('#datatable-fund-donation-history').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('profile.listDonationHistory') }}",
+            columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    className: 'text-center'
+                },
+                {
+                    data: 'fund_donation.title',
+                    name: 'fund_donation.title'
+                },
+                {
+                    data: 'fund_donation.category.name',
+                    name: 'fund_donation.category.name',
+                },
+                {
+                    data: 'amount',
+                    name: 'amount',
+                    searchable: false
+                },
+                {
+                    data: 'transactionTime',
+                    name: 'transactionTime'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                }
+            ],
+            order: [],
+        });
 
-    .card-body .d-flex {
-        margin-bottom: 0.8rem; 
+        $('#datatable-volunteer-history').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('profile.listVolunteerHistory') }}",
+            columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    className: 'text-center'
+                },
+                {
+                    data: 'volunteer.title',
+                    name: 'volunteer.title'
+                },
+                {
+                    data: 'volunteer.category.name',
+                    name: 'volunteer.category.name',
+                },
+                {
+                    data: 'joinTime',
+                    name: 'joinTime'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                }
+            ],
+            order: []
+        });
     }
-
-    .card-body i {
-        vertical-align: middle;
-    }
-
-    .card-body p {
-        margin: 0;
-        color: #333;
-    }
-
-    .table th, .table td {
-        vertical-align: middle;
-    }
-    .table-hover tbody tr:hover {
-        background-color: #f8f9fa;
-    }
-
-    </style>
-@endsection
+</script>

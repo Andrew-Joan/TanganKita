@@ -26,7 +26,7 @@
                     <ul class="dropdown-menu">
                         @if (auth()->user()->role_id === 1)
                             <li>
-                                <a href="{{ route('profile') }}" class="d-flex align-items-center justify-content-center text-dark gap-2 text-decoration-none fw-bold">
+                                <a href="{{ route('profile.index') }}" class="d-flex align-items-center justify-content-center text-dark gap-2 text-decoration-none fw-bold">
                                     <i class="fa fa-user pe-1" aria-hidden="true"></i> Profil Saya
                                 </a>
                             </li>

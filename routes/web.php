@@ -45,4 +45,11 @@ Route::prefix('fund-donation')
         Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware('auth.redirect');
     });
 
-Route::get('/profile', [UserController::class, 'index'])->name('profile')->middleware('auth');
+Route::prefix('profile')
+    ->name('profile.')
+    ->controller(UserController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index')->middleware('auth');
+        Route::get('/list-donation-history', 'listDonationHistory')->name('listDonationHistory')->middleware('auth');
+        Route::get('/list-volunteer-history', 'listVolunteerHistory')->name('listVolunteerHistory')->middleware('auth');
+    });
