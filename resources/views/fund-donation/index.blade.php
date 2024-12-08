@@ -10,7 +10,7 @@
 
             <div class="mb-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="m-0">KATEGORI</h4>
+                    <h4 class="m-0" id="categoryHeading">KATEGORI</h4>
                     @auth
                         <a class="btn btn-outline-success rounded-3 px-2" data-bs-toggle="modal" data-bs-target="#createFundDonation">Buka Donasi Uang</a>
                         @include('fund-donation.modals.create')
@@ -69,5 +69,19 @@
                 history.replaceState({}, document.title, window.location.pathname);
             }
         });
+
+        const isLogged = {!! json_encode(auth()->check()) !!};
+		$('.triggerModal').click(function() {
+            if (!isLogged) {
+                Swal.fire({
+					icon: "error",
+					title: "Gagal",
+					text: `Anda harus masuk terlebih dahulu untuk dapat melakukan donasi!`,
+					confirmButtonText: 'OKE'
+                }).then((result) => {
+                    $('.modal').modal('hide')
+                });
+            }
+	    }); 
     </script>
 @endsection

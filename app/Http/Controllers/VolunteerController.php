@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Volunteer\CreateVolunteerRequest;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 
@@ -12,23 +13,21 @@ class VolunteerController extends Controller
      */
     public function index()
     {
-        return view('volunteer');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $volunteers = Volunteer::paginate(1)->fragment('volunteerSection');
+        return view('volunteer.index', compact('volunteers'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateVolunteerRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        $validatedData['image'] = $request->storeImage();
+
+        Volunteer::create($validatedData);
+
+        return back()->with('success', 'Proposal Kegiatan Relawan berhasil ditambahkan, menunggu verifikasi dari admin');
     }
 
     /**
