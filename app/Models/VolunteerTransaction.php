@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class VolunteerTransaction extends Model
 {
     protected $guarded = ['id'];
+    protected $attributes = ['status_id' => 1];
 
     public function user()
     {
@@ -16,5 +17,10 @@ class VolunteerTransaction extends Model
     public function volunteer()
     {
         return $this->belongsTo(Volunteer::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\FundDonation;
+use App\Models\FundTransaction;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Donation\DonateFundRequest;
 use Illuminate\Foundation\Http\FormRequest as Request;
 use App\Http\Requests\FundDonation\CreateFundDonationRequest;
-use App\Models\FundTransaction;
 
 class FundDonationController extends Controller
 {
@@ -16,10 +17,28 @@ class FundDonationController extends Controller
      */
     public function index()
     {
-        $allFundDonations = FundDonation::paginate(6, ['*'], 'allFundDonations')->fragment('categoryHeading');
-        $disasterDonations = FundDonation::where('category_id', 1)->paginate(6, ['*'], 'disasterDonations')->fragment('categoryHeading');
-        $educationDonations = FundDonation::where('category_id', 2)->paginate(6, ['*'], 'educationDonations')->fragment('categoryHeading');
-        $healthDonations = FundDonation::where('category_id', 3)->paginate(6, ['*'], 'healthDonations')->fragment('categoryHeading');
+        $commonRules = [
+            ['status_id', 4],
+            ['end_date', '>=', now()]
+        ];
+
+        $allFundDonations = FundDonation::where($commonRules)
+            ->paginate(6, ['*'], 'allFundDonations')->fragment('categoryHeading');
+
+        $disasterDonations = FundDonation::where([
+                ['category_id', 1],
+                ...$commonRules
+            ])->paginate(6, ['*'], 'disasterDonations')->fragment('categoryHeading');
+
+        $educationDonations = FundDonation::where([
+                ['category_id', 2],
+                ...$commonRules
+            ])->paginate(6, ['*'], 'educationDonations')->fragment('categoryHeading');
+
+        $healthDonations = FundDonation::where([
+                ['category_id', 3],
+                ...$commonRules
+            ])->paginate(6, ['*'], 'healthDonations')->fragment('categoryHeading');
 
         $categories = Category::all();
 
@@ -74,7 +93,11 @@ class FundDonationController extends Controller
      */
     public function destroy(FundDonation $fundDonation)
     {
-        //
+        if ($fundDonation->image) Storage::delete($fundDonation->image);
+        
+        FundDonation::destroy($fundDonation->id);
+
+        return back()->with('success', 'Kegiatan donasi uang berhasil dihapus');
     }
 
     public function donateFund(DonateFundRequest $request)
@@ -87,7 +110,7 @@ class FundDonationController extends Controller
         $donation->amount += $validatedData['amount'];
         $donation->updated_at = now();
         if ($donation->amount >= $donation->target)
-            $donation->status = 2;
+            $donation->status_id = 5;
         $donation->save();
 
         FundTransaction::create($validatedData);

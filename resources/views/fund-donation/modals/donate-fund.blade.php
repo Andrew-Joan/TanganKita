@@ -35,7 +35,7 @@
                     <div class=" row mb-3">
                         <div class="col-6">
                             <label class="form-label text-dark">Tanggal Berakhir</label>
-                            <p class="form-control-plain-text text-danger fw-bold">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $donation->end_date)->format('d F Y') }}</p>
+                            <p class="form-control-plain-text text-danger fw-bold">{{ $donation->end_date->format('d F Y') }}</p>
                         </div>
                         <div class="col-6">
                             <label for="donation_amount" class="form-label text-dark">Jumlah Donasi (Dalam Rupiah)</label>

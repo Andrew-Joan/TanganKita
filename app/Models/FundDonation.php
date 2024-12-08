@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class FundDonation extends Model
 {
     protected $guarded = ['id'];
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
+    protected $attributes = ['status_id' => 1];
 
     public function user()
     {
@@ -21,5 +26,10 @@ class FundDonation extends Model
     public function fundTransaction()
     {
         return $this->hasMany(FundTransaction::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }

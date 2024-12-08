@@ -1,0 +1,29 @@
+.profile-picture img {
+    border: 3px solid #dee2e6;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile-picture img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-body .d-flex {
+    margin-bottom: 0.8rem; 
+}
+
+.card-body i {
+    vertical-align: middle;
+}
+
+.card-body p {
+    margin: 0;
+    color: #333;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: blue; /* Light gray */
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: red; /* White */
+}

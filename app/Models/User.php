@@ -32,15 +32,13 @@ class User extends Authenticatable
     /**
      * Get the attributes that should be cast.
      *
-     * @return array<string, string>
+    * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'date_of_birth' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'date_of_birth' => 'datetime',
+        'password' => 'hashed',
+    ];
+    protected $attributes = ['role_id' => 1];
 
     public function comment()
     {
@@ -75,5 +73,10 @@ class User extends Authenticatable
     public function volunteerTransaction()
     {
         return $this->hasMany(VolunteerTransaction::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }
