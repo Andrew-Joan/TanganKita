@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -15,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('status_id')->constrained('statuses')->onDelete('cascade');
             $table->string('title');
             $table->timestamp('start_date')->default(now());
             $table->timestamp('end_date')->nullable();
@@ -22,7 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('target');
             $table->text('description');
             $table->string('image')->nullable();
-            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

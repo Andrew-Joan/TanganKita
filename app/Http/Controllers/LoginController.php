@@ -22,7 +22,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
     
             $user = Auth::user();
-            return to_route('fund-donation.index')->with('success', 'Berhasil masuk! Selamat datang kembali ' . $user->name . '!');
+            return to_route('fund-donation.index')->with('success', 'Berhasil masuk! Selamat datang ' . $user->name . '!');
         }
 
         return to_route('login')->with('error', 'Gagal masuk! Silakan periksa kembali alamat e-mail dan kata sandi anda');

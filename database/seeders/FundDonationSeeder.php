@@ -32,7 +32,7 @@ class FundDonationSeeder extends Seeder
                 'amount' => $amount,
                 'target' => $target,
                 'description' => $faker->paragraph(2),
-                'status' => 1,
+                'status_id' => 1,
                 'start_date' => now(),
                 'end_date' => $faker->dateTimeBetween('+1 week', '+1 month')->format('Y-m-d')
             ]);

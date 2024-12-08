@@ -16,7 +16,10 @@ class FundDonationController extends Controller
      */
     public function index()
     {
-        $allFundDonations = FundDonation::paginate(6, ['*'], 'allFundDonations')->fragment('categoryHeading');
+        $allFundDonations = FundDonation::where([
+                ['status_id', 4],
+                ['end_date', '>=', now()]
+            ])->paginate(6, ['*'], 'allFundDonations')->fragment('categoryHeading');
         $disasterDonations = FundDonation::where('category_id', 1)->paginate(6, ['*'], 'disasterDonations')->fragment('categoryHeading');
         $educationDonations = FundDonation::where('category_id', 2)->paginate(6, ['*'], 'educationDonations')->fragment('categoryHeading');
         $healthDonations = FundDonation::where('category_id', 3)->paginate(6, ['*'], 'healthDonations')->fragment('categoryHeading');
