@@ -39,7 +39,7 @@
                         @endif
                         <li>
                             <div class="d-flex align-items-center justify-content-center">
-                                <form action="{{ route('logout') }}" method="POST">
+                                <form action="{{ route('logout') }}" method="POST" class="mb-0">
                                     @csrf
                                     <button class="dropdown-item fw-bold" type="submit"><i class="fa fa-sign-out pe-1" aria-hidden="true"></i> Keluar</button>
                                 </form>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Volunteer\CreateVolunteerRequest;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Volunteer\CreateVolunteerRequest;
 
 class VolunteerController extends Controller
 {
@@ -59,6 +60,10 @@ class VolunteerController extends Controller
      */
     public function destroy(Volunteer $volunteer)
     {
-        //
+        if ($volunteer->image) Storage::delete($volunteer->image);
+        
+        Volunteer::destroy($volunteer->id);
+
+        return back()->with('success', 'Kegiatan relawan berhasil dihapus');
     }
 }

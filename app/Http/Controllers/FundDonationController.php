@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\FundDonation;
+use App\Models\FundTransaction;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Donation\DonateFundRequest;
 use Illuminate\Foundation\Http\FormRequest as Request;
 use App\Http\Requests\FundDonation\CreateFundDonationRequest;
-use App\Models\FundTransaction;
 
 class FundDonationController extends Controller
 {
@@ -77,7 +78,11 @@ class FundDonationController extends Controller
      */
     public function destroy(FundDonation $fundDonation)
     {
-        //
+        if ($fundDonation->image) Storage::delete($fundDonation->image);
+        
+        FundDonation::destroy($fundDonation->id);
+
+        return back()->with('success', 'Kegiatan donasi uang berhasil dihapus');
     }
 
     public function donateFund(DonateFundRequest $request)

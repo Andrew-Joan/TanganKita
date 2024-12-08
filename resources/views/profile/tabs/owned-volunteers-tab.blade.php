@@ -19,7 +19,17 @@
                     <p class="text-muted">{{ $percentage }} Terkumpul</p>
                     <p><strong>Tanggal Buka:</strong> {{ $ownedVolunteer->created_at->format('d F Y') }}</p>
                     <p><strong>Tanggal Berakhir:</strong> {{ $ownedVolunteer->end_date->format('d F Y') }}</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
+                    <div class="d-flex mb-0 gap-2">
+                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <form action="{{ route('volunteer.destroy', $ownedVolunteer->id) }}" method="POST" class="mb-0">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                               <i class="fa fa-trash" title="Hapus Kegiatan Relawan"></i>
+                            </button>
+                         </form>
+                    </div>
                 </div>
             </div>
         </div>
