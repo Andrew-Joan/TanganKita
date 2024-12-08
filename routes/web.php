@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\FundDonationController;
@@ -45,4 +45,4 @@ Route::prefix('fund-donation')
         Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware('auth.redirect');
     });
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile', [UserController::class, 'index'])->name('profile')->middleware('auth');
