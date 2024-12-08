@@ -18,7 +18,7 @@
                     <hr>
                     <div class="mb-3">
                         <label class="form-label text-dark">Deskripsi Donasi</label>
-                        <p class="form-control-plaintext">{{ $donation->description }}</p>
+                        <p class="form-control-plaintext">{!! $donation->description !!}</p>
                     </div>
                     <hr>
                     <div class="row mb-3">

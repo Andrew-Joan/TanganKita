@@ -12,7 +12,7 @@
 					<input type="hidden" name="user_id" value="{{ auth()->id() }}">
 					<div class="mb-2">
 						<label for="text" class="form-label text-dark">Judul Donasi</label>
-						<input type="text" class="form-control" id="title" name="title" placeholder="Masukkan Judul Donasi...">
+						<input type="text" class="form-control" id="title" name="title" placeholder="Judul donasi...">
 					</div>
 					<div>
 						<label for="category_id" class="form-label text-dark">Kategori Donasi</label>
@@ -30,7 +30,7 @@
 					</div>
 					<div class="mb-2">
 						<label for="target" class="form-label text-dark">Target Donasi (Dalam Rupiah)</label>
-						<input id="text" class="form-control" name="target" value="{{ old('target') }}">
+						<input id="number" class="form-control" name="target" value="{{ old('target') }}">
 					</div>
 					<div class="row">
 						<div class="col">
@@ -38,13 +38,13 @@
 							<input type="text" class="form-control" id="startDate" name="start_date" value="{{ Carbon\Carbon::now()->format('d/m/Y') }}" disabled> 
 						</div>
 						<div class="col">
-							<div class="form-label text-dark"><i class="fa-solid fa-calendar-days mx-1"></i><label for="endDate" class="text-dark">Tanggal Tutup</label></div>
-							<input type="date" class="form-control" id="endDate" name="end_date" placeholder="Tanggal ditutup" required autocomplete="off">
+							<div class="form-label text-dark"><i class="fa-solid fa-calendar-days mx-1"></i><label for="endDate" class="text-dark">Tanggal Berakhir</label></div>
+							<input type="date" class="form-control" id="endDate" name="end_date" placeholder="Tanggal berakhir..." required autocomplete="off">
 						</div>
 					</div>
 					<div class="mb-3">
 						<label for="image" class="form-label text-dark">Gambar Donasi</label>
-						<input class="form-control" type="file" id="image" name="image" onchange="previewImage()" accept=".png, .jpg, .img">
+						<input class="form-control" type="file" id="image-fund-donation" name="image" onchange="previewImage()" accept=".png, .jpg, .img">
 						<img class="img-preview img-fluid mt-2 col-sm-5 d-block mx-auto d-block">
 					</div>
 					<div class="modal-footer">
@@ -68,7 +68,7 @@
 
     function previewImage()
     {
-        const img = document.querySelector("#image");
+        const img = document.querySelector("#image-fund-donation");
         const imgPreview = document.querySelector(".img-preview");
 
         // versi lebih panjangnya
@@ -80,7 +80,7 @@
         // }
         
         // versi lebih pendeknya
-        const blob = URL.createObjectURL(image.files[0]);
+        const blob = URL.createObjectURL(img.files[0]);
         imgPreview.src = blob;
     }
 </script>

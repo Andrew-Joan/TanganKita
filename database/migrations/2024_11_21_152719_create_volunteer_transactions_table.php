@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('volunteer_id')->constrained('volunteers')->onDelete('cascade');
+            $table->tinyInteger('is_accepted')->default(0);
             $table->timestamps();
         });
     }

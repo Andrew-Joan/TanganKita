@@ -16,10 +16,10 @@ class FundDonationController extends Controller
      */
     public function index()
     {
-        $allFundDonations = FundDonation::paginate(6, ['*'], 'allFundDonations');
-        $disasterDonations = FundDonation::where('category_id', 1)->paginate(6, ['*'], 'disasterDonations');
-        $educationDonations = FundDonation::where('category_id', 2)->paginate(6, ['*'], 'educationDonations');
-        $healthDonations = FundDonation::where('category_id', 3)->paginate(6, ['*'], 'healthDonations');
+        $allFundDonations = FundDonation::paginate(6, ['*'], 'allFundDonations')->fragment('categoryHeading');
+        $disasterDonations = FundDonation::where('category_id', 1)->paginate(6, ['*'], 'disasterDonations')->fragment('categoryHeading');
+        $educationDonations = FundDonation::where('category_id', 2)->paginate(6, ['*'], 'educationDonations')->fragment('categoryHeading');
+        $healthDonations = FundDonation::where('category_id', 3)->paginate(6, ['*'], 'healthDonations')->fragment('categoryHeading');
 
         $categories = Category::all();
 
@@ -42,7 +42,7 @@ class FundDonationController extends Controller
 
         FundDonation::create($validatedData);
 
-        return back()->with('success', 'Kampanye Donasi Uang berhasil ditambahkan, menunggu verifikasi dari admin');
+        return back()->with('success', 'Proposal Kampanye Donasi Uang berhasil ditambahkan, menunggu verifikasi dari admin');
     }
 
     /**

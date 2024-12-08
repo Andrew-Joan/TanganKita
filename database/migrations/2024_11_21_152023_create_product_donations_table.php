@@ -16,11 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('title');
-            $table->timestamp('end_date');
-            $table->unsignedBigInteger('amount');
+            $table->timestamp('start_date')->default(now());
+            $table->timestamp('end_date')->nullable();
+            $table->unsignedBigInteger('amount')->default(0);
             $table->unsignedBigInteger('target');
             $table->text('description');
             $table->string('image')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

@@ -19,11 +19,13 @@ Route::controller(LoginController::class)->group(function() {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::get('/volunteer', function() {
-    return view('volunteer');
-})->name('volunteer');
-
-Route::get('/volunteer', [VolunteerController::class, 'index'])->name('volunteer.index');
+Route::prefix('volunteer')
+    ->name('volunteer.')
+    ->controller(VolunteerController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
+    });
 
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
