@@ -25,7 +25,7 @@
                         <form action="{{ route('volunteer.destroy', $ownedVolunteer->id) }}" method="POST" class="mb-0">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                            <button type="submit" class="deleteVolunteer btn btn-outline-danger btn-sm">
                                <i class="fa fa-trash" title="Hapus Kegiatan Relawan"></i>
                             </button>
                          </form>
@@ -35,3 +35,29 @@
         </div>
     @endforeach
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.deleteVolunteer').on('click', function(event) {
+            event.preventDefault();
+
+            const form = $(this).closest('form'); // Get the closest form element
+
+            Swal.fire({
+                title: 'Hapus kampanye?',
+                text: "Apakah anda yakin ingin menghapus kegiatan relawan ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#000000',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
