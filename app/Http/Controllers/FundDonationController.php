@@ -67,11 +67,12 @@ class FundDonationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FundDonation $fundDonation)
+    public function show($id)
     {
-        //
-    }
+        $donation = FundDonation::with('category')->findOrFail($id);
 
+        return view('fund-donation.show', compact('donation'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

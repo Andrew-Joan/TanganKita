@@ -26,8 +26,8 @@
     <!-- Main Content -->
     <main class="position-relative">
         @yield('content')
-        <footer class="position-absolute bottom-0 start-50 translate-middle-x">
-            <p>&copy; 2024 Tangankita. All rights reserved.</p>
+        <footer class="bottom-0 position-absolute start-50 translate-middle-x">
+            <p>&copy; 2024 TanganKita. All rights reserved.</p>
         </footer>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

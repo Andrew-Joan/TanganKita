@@ -33,6 +33,7 @@ Route::prefix('fund-donation')
     ->controller(FundDonationController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/{id}', 'show')->name('show'); // Shows the details for a specific donation
         Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
         Route::delete('/delete/{fundDonation}', 'destroy')->name('destroy')->middleware('auth.redirect');
         Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware('auth.redirect');
