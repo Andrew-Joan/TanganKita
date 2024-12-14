@@ -21,7 +21,10 @@
                     <p class="mb-2"><strong>Tanggal Berakhir:</strong> {{ $ownedFundDonation->end_date->format('d F Y') }}</p>
                     <div class="d-flex mb-0 gap-2">
                         <a href="#" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                        <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        
+                        <a href="#" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateFundDonation-{{ $ownedFundDonation->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        @include('fund-donation.modals.update', ['donation' => $ownedFundDonation])
+                        
                         <form action="{{ route('fund-donation.destroy', $ownedFundDonation->id) }}" method="POST" class="mb-0">
                             @csrf
                             @method('delete')

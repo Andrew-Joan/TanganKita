@@ -47,7 +47,7 @@ class CreateVolunteerRequest extends FormRequest
     public function storeImage()
     {
         if ($this->file('image')) {
-            return $this->file('image')->store('volunteer-images');
+            return base64_encode(file_get_contents($this->file('image')));
         }
 
         return null;

@@ -6,6 +6,7 @@ use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Volunteer\CreateVolunteerRequest;
+use App\Http\Requests\Volunteer\UpdateVolunteerRequest;
 
 class VolunteerController extends Controller
 {
@@ -40,19 +41,18 @@ class VolunteerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Volunteer $volunteer)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Volunteer $volunteer)
+    public function update(UpdateVolunteerRequest $request, Volunteer $volunteer)
     {
-        //
+        $validatedData = $request->validated();
+        $validatedData['image'] = $request->storeImage();
+
+        if (!$validatedData['image'])
+            unset($validatedData['image']);
+        $volunteer->update($validatedData);
+
+        return back()->with('success', 'Kegiatan relawan berhasil diperbaharui!');
     }
 
     /**

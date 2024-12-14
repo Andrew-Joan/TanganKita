@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Volunteer;
 use App\Models\FundDonation;
 use App\Models\FundTransaction;
-use App\Models\Volunteer;
-use App\Models\VolunteerTransaction;
 use Yajra\DataTables\DataTables;
+use App\Models\VolunteerTransaction;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -29,7 +30,9 @@ class UserController extends Controller
         $ownedFundDonations = FundDonation::with('status')->where('user_id', $user->id)->get();
         $ownedVolunteers = Volunteer::where('user_id', $user->id)->get();
 
-        return view('profile.index', compact('user', 'amountDonated', 'volunteerJoined', 'ownedFundDonations', 'ownedVolunteers'));
+        $categories = Category::all();
+
+        return view('profile.index', compact('user', 'amountDonated', 'volunteerJoined', 'ownedFundDonations', 'ownedVolunteers', 'categories'));
     }
 
     public function listDonationHistory()

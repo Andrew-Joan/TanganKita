@@ -34,6 +34,7 @@ Route::prefix('fund-donation')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
+        Route::patch('/update{fundDonation}', 'update')->name('update')->middleware('auth.redirect');
         Route::delete('/delete/{fundDonation}', 'destroy')->name('destroy')->middleware('auth.redirect');
         Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware('auth.redirect');
     });
@@ -45,6 +46,7 @@ Route::prefix('volunteer')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
+        Route::patch('/update{volunteer}', 'update')->name('update')->middleware('auth.redirect');
         Route::delete('/destroy/{volunteer}', 'destroy')->name('destroy')->middleware('auth.redirect');
     });
 
