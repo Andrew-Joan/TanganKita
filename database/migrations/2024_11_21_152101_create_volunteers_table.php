@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('amount')->default(0);
             $table->unsignedBigInteger('target');
             $table->text('description');
-            $table->string('image')->nullable();
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

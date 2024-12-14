@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Donation\DonateFundRequest;
 use Illuminate\Foundation\Http\FormRequest as Request;
 use App\Http\Requests\FundDonation\CreateFundDonationRequest;
+use App\Http\Requests\FundDonation\UpdateFundDonationRequest;
 
 class FundDonationController extends Controller
 {
@@ -73,19 +74,18 @@ class FundDonationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(FundDonation $fundDonation)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FundDonation $fundDonation)
+    public function update(UpdateFundDonationRequest $request, FundDonation $fundDonation)
     {
-        //
+        $validatedData = $request->validated();
+        $validatedData['image'] = $request->storeImage();
+
+        if (!$validatedData['image'])
+            unset($validatedData['image']);
+        $fundDonation->update($validatedData);
+
+        return back()->with('success', 'Kampanye Donasi Uang berhasil diperbaharui!');
     }
 
     /**

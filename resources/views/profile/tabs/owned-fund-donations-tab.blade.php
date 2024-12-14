@@ -21,11 +21,14 @@
                     <p class="mb-2"><strong>Tanggal Berakhir:</strong> {{ $ownedFundDonation->end_date->format('d F Y') }}</p>
                     <div class="d-flex mb-0 gap-2">
                         <a href="#" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                        <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        
+                        <a href="#" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateFundDonation-{{ $ownedFundDonation->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        @include('fund-donation.modals.update', ['donation' => $ownedFundDonation])
+                        
                         <form action="{{ route('fund-donation.destroy', $ownedFundDonation->id) }}" method="POST" class="mb-0">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                            <button type="submit" class="deleteDonation btn btn-outline-danger btn-sm">
                                <i class="fa fa-trash" title="Hapus Kampanye Donasi Uang"></i>
                             </button>
                          </form>
@@ -35,3 +38,29 @@
         </div>
     @endforeach
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.deleteDonation').on('click', function(event) {
+            event.preventDefault();
+
+            const form = $(this).closest('form'); // Get the closest form element
+
+            Swal.fire({
+                title: 'Hapus kampanye?',
+                text: "Apakah anda yakin ingin menghapus kegiatan donasi uang ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#000000',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
