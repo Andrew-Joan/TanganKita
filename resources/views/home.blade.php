@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="d-flex flex-column min-vh-100 container pb-5">
+<div class="container pb-5 d-flex flex-column min-vh-100">
     <!-- Main Content -->
     <main class="container py-5 flex-grow-1 d-flex justify-content-center align-items-center">
         <div class="row align-items-center">
@@ -29,23 +29,23 @@
                     <div class="card-body" style="padding: 4rem">
                         <h2 class="mb-4 h5 fw-bold judul">Jumlah Donasi</h2>
                         <!-- Toggle Buttons -->
-                        <div class="mb-3 btn-group w-100" style="padding-bottom: 2rem">
-                            <button class="btn btn-primary">One-time</button>
-                            <button class="btn btn-outline-primary">Weekly</button>
+                        <div class="mb-3 btn-group w-100" style="padding-bottom: 3rem">
+                            <button class="btn btn-primary">Sekali</button>
+                            <button class="btn btn-outline-primary">Mingguan</button>
                         </div>
                         <!-- Donation Amount Options -->
-                        <div class="row g-2" style="padding-bottom: 2rem">
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">500 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">1000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">2000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">5000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">10000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">50000 Ks</button></div>
+                        <div class="row g-1" style="padding-bottom: 3rem">
+                            <div class="col-4 coldonate"><button class="btn btn-light w-100">500</button></div>
+                            <div class="col-4 coldonate"><button class="btn btn-light w-100">1000</button></div>
+                            <div class="col-4 coldonate"><button class="btn btn-light w-100">2000</button></div>
+                            <div class="col-4 coldonate"><button class="btn btn-light w-100">5000</button></div>
+                            <div class="col-4 coldonate"><button class="btn btn-light w-100">10000</button></div>
+                            <div class="col-4 coldonate"><button class="btn btn-light w-100">50000</button></div>
                         </div>
                         <div style="padding-bottom: 2rem">
-                            <input type="text" class="mt-3 form-control" placeholder="Custom Amount">
+                            <input type="text" class="mt-3 form-control" placeholder="Masukan nominal (dalam rupiah)">
                             <!-- Submit Button -->
-                            <button class="mt-3 btn btn-primary w-100">Donasi Sekarang</button>
+                            <button class="mt-4 btn btn-primary w-100">Donasi Sekarang</button>
                         </div>
                         <!-- Custom Amount Input -->
                     </div>

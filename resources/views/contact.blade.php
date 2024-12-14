@@ -5,7 +5,7 @@
 @section('content')
 <!-- Hero Section -->
 <section class="py-5 bg-white">
-    <div class="container">
+    <div class="container mt-5">
         <div class="row align-items-center">
             <!-- Left Section: Image -->
             <div class="col-md-6">
@@ -20,25 +20,25 @@
                 </p>
                 <!-- Categories -->
                 <div class="mt-4 mb-2 row text-start">
-                    <div class="mb-3 col-sm-6">
+                    <div class="mb-5 col-sm-6">
                         <div class="d-flex align-items-center">
                             Category 1
                         </div>
                         <small class="text-muted">Mattis et aliquam fermentum sed sagittis.</small>
                     </div>
-                    <div class="mb-3 col-sm-6">
+                    <div class="mb-5 col-sm-6">
                         <div class="d-flex align-items-center">
                             Category 2
                         </div>
                         <small class="text-muted">Mattis et aliquam fermentum sed sagittis.</small>
                     </div>
-                    <div class="mb-3 col-sm-6">
+                    <div class="mb-5 col-sm-6">
                         <div class="d-flex align-items-center">
                             Category 3
                         </div>
                         <small class="text-muted">Mattis et aliquam fermentum sed sagittis.</small>
                     </div>
-                    <div class="mb-3 col-sm-6">
+                    <div class="mb-5 col-sm-6">
                         <div class="d-flex align-items-center">
                             Category 4
                         </div>
@@ -56,13 +56,13 @@
         <div class="row align-items-center">
             <!-- Left Section: Text and Form -->
             <div class="my-5 col-md-5">
-                <h2 class="fw-bold">Jadilah bagian dalam perjalanan kami.</h2>
-                <p>
+                <h1 class="fw-bold">Jadilah bagian dalam perjalanan kami.</h2>
+                <p style="font-size: 18px; color: white; margin-top: 50px;">
                     Apakah anda tertarik untuk membantu sesama bersama kami? Bergabunglah dengan kami!
                     <br>(Tim kami akan menghubungi anda melalui alamat email yang anda cantumkan di bawah ini.)
                 </p>
                 <form class="mt-5 d-flex">
-                    <input type="email" class="form-control me-2" placeholder="Masukkan alamat email" required>
+                    <input type="email" class="form-control me-5" placeholder="Masukkan alamat email" required>
                     <button class="px-4 btn btn-dark">Submit</button>
                 </form>
             </div>
