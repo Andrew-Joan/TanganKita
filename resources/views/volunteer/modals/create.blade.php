@@ -40,8 +40,8 @@
 					</div>
 					<div class="mb-3">
 						<label for="image" class="form-label text-dark">Gambar Kegiatan Relawan</label>
-						<input class="form-control" type="file" id="image-volunteer{{ $volunteerCategoryId }}" name="image" onchange="previewImage{{ $volunteerCategoryId }}()" accept=".png, .jpg, .img">
-						<img class="img-preview img-fluid mt-2 col-sm-5 d-block mx-auto d-block" id="image-volunteer{{ $volunteerCategoryId }}-preview">
+						<input class="form-control" type="file" id="image-volunteer-{{ $volunteerCategoryId }}" name="image" onchange="previewImage{{ $volunteerCategoryId }}()" accept=".png, .jpg, .img">
+						<img class="img-preview img-fluid mt-2 col-sm-5 d-block mx-auto d-block" id="image-volunteer-{{ $volunteerCategoryId }}-preview">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Batal</button>
@@ -64,8 +64,8 @@
 
     function previewImage{{ $volunteerCategoryId }}()
     {
-        const img = document.querySelector("#image-volunteer{{ $volunteerCategoryId }}");
-        const imgPreview = document.querySelector("#image-volunteer{{ $volunteerCategoryId }}-preview");
+        const img = document.querySelector("#image-volunteer-{{ $volunteerCategoryId }}");
+        const imgPreview = document.querySelector("#image-volunteer-{{ $volunteerCategoryId }}-preview");
         const blob = URL.createObjectURL(img.files[0]);
 
         imgPreview.src = blob;

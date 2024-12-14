@@ -25,3 +25,13 @@
    </script>
 @endif
 
+
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let errorMessages = `{!! implode('<br>', $errors->all()) !!}`;
+            generateSwalPayload("Gagal", errorMessages, "error");
+        });
+    </script>
+@endif
+

@@ -91,7 +91,11 @@
 				@foreach ($volunteers as $volunteer)
 					<div class="col-md-4">
 						<div class="card shadow rounded-4 h-100">
-							<img src="{{ asset('images/pend.png') }}" class="card-img-top rounded-top-4" alt="Kegiatan Pendidikan">
+							@if ($volunteer->image)
+								<img src="data:image/png;base64,{{ $volunteer->image }}" class="card-img-top rounded-top-4" alt="Kegiatan Pendidikan" style="height: 300px;">
+							@else
+								<img src="data:image/png;base64,{{ $volunteer->image }}" class="card-img-top rounded-top-4" alt="Kegiatan Pendidikan" style="height: 300px;">
+							@endif
 							<div class="card-body text-center">
 								<h5 class="fw-bold text-primary">{{ $volunteer->title }}</h5>
 								<p class="text-muted">{!! Str::words($volunteer->description, 20); !!}</p>

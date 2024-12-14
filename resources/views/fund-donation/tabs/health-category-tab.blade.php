@@ -7,8 +7,8 @@
         <div class="col-md-3 shadow rounded-4 py-2 border">
             <div class="campaign-card">
                 <div class="p-3">
-                    @if ($healthDonation->image != null)
-                        <img class="object-fit-cover w-100 rounded-3" src="{{ asset('storage/' . $healthDonation->image) }}" alt="Campaign Image" style="width: 300px; height:200px;">
+                    @if ($healthDonation->image)
+                        <img class="object-fit-cover w-100 rounded-3" src="data:image/png;base64,{{ $healthDonation->image }}" alt="Campaign Image" style="width: 300px; height:200px;">
                     @else
                         <img class="object-fit-cover w-100 rounded-3" src="https://via.placeholder.com/300x200" alt="Campaign Image">
                     @endif   

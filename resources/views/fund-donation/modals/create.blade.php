@@ -11,7 +11,7 @@
 					@csrf
 					<input type="hidden" name="user_id" value="{{ auth()->id() }}">
 					<div class="mb-2">
-						<label for="text" class="form-label text-dark">Judul Donasi</label>
+						<label for="title" class="form-label text-dark">Judul Donasi</label>
 						<input type="text" class="form-control" id="title" name="title" placeholder="Judul donasi...">
 					</div>
 					<div>
