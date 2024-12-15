@@ -13,7 +13,7 @@
                         <img class="object-fit-cover w-100 rounded-3" src="https://via.placeholder.com/300x200" alt="Campaign Image">
                     @endif   
                     <div class="text-body-tertiary fw-medium py-2 small">{{ $educationDonation->category->name }}</div>
-                    <h5>{{ $educationDonation->title }}</h5>
+                    <h5><a href="{{ route('fund-donation.show', $educationDonation->id) }}" class="text-dark">{{ $educationDonation->title }}</a></h5>
                     <div class="d-flex align-items-center my-3" style="width: 100%;">
                         <div class="progress" style="height: 5px;flex-grow: 1;">
                             <div class="progress-bar" role="progressbar" style="width: {{ $percentage }}%;"></div>

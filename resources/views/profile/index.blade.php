@@ -61,9 +61,6 @@
                     <a class="nav-link active" id="pills-fund-donation-tab" data-bs-toggle="pill" data-bs-target="#pills-fund-donation" type="button" role="tab" aria-controls="pills-fund-donation" aria-selected="false">Donasi Uang</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-product-donation-tab" data-bs-toggle="pill" data-bs-target="#pills-product-donation" type="button" role="tab" aria-controls="pills-product-donation" aria-selected="false">Donasi Barang</a>
-                </li>
-                <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-volunteer-tab" data-bs-toggle="pill" data-bs-target="#pills-volunteer" type="button" role="tab" aria-controls="pills-volunteer" aria-selected="false">Kegiatan Relawan</a>
                 </li>
             </ul>

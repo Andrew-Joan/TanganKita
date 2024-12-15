@@ -1,4 +1,4 @@
-<div class="modal fade" id="{{ $modalId }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="donateFundLabel" aria-hidden="true">
+<div class="modal fade" id="donate-fund-{{ $donation->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="donateFundLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -6,7 +6,7 @@
             </div>
 
             <div class="modal-body text-secondary text-center">
-                <form action="{{ route('fund-donation.donate-fund') }}" method="POST" id="donateFundForm-{{ $modalId }}">
+                <form action="{{ route('fund-donation.donate-fund') }}" method="POST" id="donateFundForm-{{ $donation->id }}">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
@@ -56,6 +56,6 @@
 
 {!! JsValidator::formRequest(
     'App\Http\Requests\Donation\DonateFundRequest',
-    Crypt::encrypt(['selector' => "#donateFundForm-{$modalId}", 'need_loading' => true])
+    Crypt::encrypt(['selector' => "#donateFundForm-{$donation->id}", 'need_loading' => true])
 ) !!}
 

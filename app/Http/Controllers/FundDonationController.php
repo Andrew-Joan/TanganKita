@@ -72,7 +72,8 @@ class FundDonationController extends Controller
      */
     public function show(FundDonation $fundDonation)
     {
-        //
+        $categories = Category::all();
+        return view('fund-donation.show', compact('fundDonation', 'categories'));
     }
 
     /**
@@ -99,7 +100,7 @@ class FundDonationController extends Controller
         
         FundDonation::destroy($fundDonation->id);
 
-        return back()->with('success', 'Kegiatan donasi uang berhasil dihapus');
+        return to_route('profile.index')->with('success', 'Kegiatan donasi uang berhasil dihapus');
     }
 
     public function donateFund(DonateFundRequest $request)
