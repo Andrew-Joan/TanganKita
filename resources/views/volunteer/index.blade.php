@@ -88,7 +88,7 @@
         		<p class="text-muted">Jelajahi berbagai kegiatan yang dapat Anda ikuti untuk membuat perubahan nyata.</p>
     		</div>
     		<div class="row g-4" id="volunteerSection">
-				@foreach ($volunteers as $volunteer)
+				@forelse ($volunteers as $volunteer)
 					<div class="col-md-4">
 						<div class="card shadow rounded-4 h-100">
 							@if ($volunteer->image)
@@ -105,7 +105,9 @@
 							</div>
 						</div>
 					</div>
-				@endforeach
+				@empty
+					<h4 class="text-danger text-center">Tidak terdapat kegiatan relawan yang dapat diikuti untuk saat ini, silakan cek kembali di lain waktu</h4>
+				@endforelse
 				{{ $volunteers->links() }}
 			</div>
 		</section>

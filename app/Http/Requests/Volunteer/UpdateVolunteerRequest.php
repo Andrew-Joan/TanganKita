@@ -27,7 +27,7 @@ class UpdateVolunteerRequest extends FormRequest
             'category_id' => 'required|in:1,2,3',
             'description' => 'required',
             'target' => 'required|integer',
-            'end_date' => 'required|date',
+            'end_date' => 'required|date|after:tomorrow',
             'image' => 'nullable|image|file|max:1024'
         ];
     }

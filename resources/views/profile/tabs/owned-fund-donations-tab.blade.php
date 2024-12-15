@@ -2,14 +2,21 @@
     @foreach ($ownedFundDonations as $ownedFundDonation)
         @php
             $percentage = ceil($ownedFundDonation->amount / $ownedFundDonation->target * 100) . '%';
-            $bgColor = $ownedFundDonation->status_id === 1 ? 'bg-warning' : ($ownedFundDonation->status_id === 4 ? 'bg-success' : 'bg-danger');
+            $bgColor = 'bg-info';
+            if ($ownedFundDonation->status_id === 1) {
+                $bgColor = 'bg-warning';
+            } else if ($ownedFundDonation->status_id === 3) {
+                $bgColor = 'bg-danger';
+            } else if ($ownedFundDonation->status_id === 4) {
+                $bgColor = 'bg-success';
+            }
         @endphp
         <div class="col-md-6">
             <div class="card shadow rounded-4 border-0">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="fw-bold text-primary">{{ $ownedFundDonation->title }}</h5>
-                        <div class="badge {{ $bgColor }} text-light">{{ $ownedFundDonation->status->name }}</div>
+                        <div class="badge {{ $bgColor }} text-dark">{{ $ownedFundDonation->status->name }}</div>
                     </div>
                     <p class="mb-1"><strong>Target:</strong> Rp. {{ number_format($ownedFundDonation->target, 0, ',', '.') }}</p>
                     <p class="mb-1"><strong>Terkumpul:</strong> Rp. {{ number_format($ownedFundDonation->amount, 0, ',', '.') }}</p>

@@ -15,7 +15,15 @@ class VolunteerController extends Controller
      */
     public function index()
     {
-        $volunteers = Volunteer::paginate(1)->fragment('volunteerSection');
+        Volunteer::where('end_date', '<', now())->update(['status_id' => 5]);
+
+        $volunteers = Volunteer::where([
+                ['status_id', 4],
+                ['end_date', '>=', now()]
+            ])
+            ->paginate(3)
+            ->fragment('volunteerSection');
+
         return view('volunteer.index', compact('volunteers'));
     }
 

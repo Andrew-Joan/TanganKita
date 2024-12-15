@@ -32,7 +32,7 @@
                             </li>
                         @elseif (auth()->user()->role_id === 2)
                             <li class="px-3">
-                                <a href="#" class="d-flex align-items-center justify-content-center text-dark gap-2 text-decoration-none fw-bold">
+                                <a href="{{ route('admin.index') }}" class="d-flex align-items-center justify-content-center text-dark gap-2 text-decoration-none fw-bold">
                                     <i class="fa fa-user-secret pe-1" aria-hidden="true"></i> Dasbor Administrator
                                 </a>
                             </li>
