@@ -18,6 +18,8 @@ class FundDonationController extends Controller
      */
     public function index()
     {
+        FundDonation::where('end_date', '<', now())->update(['status_id' => 5]);
+
         $commonRules = [
             ['status_id', 4],
             ['end_date', '>=', now()]

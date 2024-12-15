@@ -71,9 +71,6 @@
                 <div class="tab-pane fade show active" id="pills-fund-donation" role="tabpanel" aria-labelledby="pills-fund-donation-tab" tabindex="0">
                     @include('profile.tabs.owned-fund-donations-tab')
                 </div>
-                <div class="tab-pane fade" id="pills-product-donation" role="tabpanel" aria-labelledby="pills-product-donation-tab" tabindex="0">
-                    {{-- @include('profile.tabs.owned-fund-donations-tab') --}}
-                </div>
                 <div class="tab-pane fade" id="pills-volunteer" role="tabpanel" aria-labelledby="pills-volunteer-tab" tabindex="0">
                     @include('profile.tabs.owned-volunteers-tab')
                 </div>

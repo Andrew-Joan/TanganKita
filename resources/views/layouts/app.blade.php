@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
     <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 </head>
-<body class="bg-white">
+<body>
     <!-- Navbar -->
     @include('layouts.navbar')
     @include('layouts.alert-swal')

@@ -22,6 +22,10 @@ class LoginController extends Controller
             $request->session()->regenerate();
     
             $user = Auth::user();
+
+            if ($user->role_id == 2)
+                return to_route('admin.index')->with('success', 'Selamat datang kembali admin ' . $user->name . '!');
+
             return to_route('fund-donation.index')->with('success', 'Berhasil masuk! Selamat datang ' . $user->name . '!');
         }
 

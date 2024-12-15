@@ -1,0 +1,13 @@
+body, html {
+    background-color: rgb(57, 55, 55); 
+    color: rgb(214, 205, 205);
+    font-weight: 600;
+}
+
+body {
+    background-image: none;
+}
+
+footer > p {
+    color: rgb(214, 205, 205) !important;
+}

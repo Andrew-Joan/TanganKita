@@ -2,7 +2,14 @@
     @foreach ($ownedVolunteers as $ownedVolunteer)
         @php
             $percentage = ceil($ownedVolunteer->amount / $ownedVolunteer->target * 100) . '%';
-            $bgColor = $ownedVolunteer->status_id === 1 ? 'bg-warning' : ($ownedVolunteer->status_id === 2 ? 'bg-success' : 'bg-danger');
+            $bgColor = 'bg-info';
+            if ($ownedVolunteer->status_id === 1) {
+                $bgColor = 'bg-warning';
+            } else if ($ownedVolunteer->status_id === 3) {
+                $bgColor = 'bg-danger';
+            } else if ($ownedVolunteer->status_id === 4) {
+                $bgColor = 'bg-success';
+            }
         @endphp
         <div class="col-md-6">
             <div class="card shadow rounded-4 border-0">

@@ -27,7 +27,7 @@ class CreateFundDonationRequest extends FormRequest
             'category_id' => 'required|in:1,2,3',
             'description' => 'required',
             'target' => 'required|integer',
-            'end_date' => 'required|date',
+            'end_date' => 'required|date|after:tomorrow',
             'image' => 'required|image|file|max:1024' //|file|max:... ini ngasih constraint maksimum ukuran file yang bs dimasukkan. //image| artinya input ini hanya menerima image, tidak bisa dimasukkan file lain seperti pdf dll
         ];
     }
