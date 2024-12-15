@@ -13,7 +13,7 @@
                         <img class="object-fit-cover w-100 rounded-3" src="https://via.placeholder.com/300x200" alt="Campaign Image">
                     @endif   
                     <div class="text-body-tertiary fw-medium py-2 small">{{ $healthDonation->category->name }}</div>
-                    <h5>{{ $healthDonation->title }}</h5>
+                    <h5><a href="{{ route('fund-donation.show', $healthDonation->id) }}" class="text-dark">{{ $healthDonation->title }}</a></h5>
                     <div class="d-flex align-items-center my-3" style="width: 100%;">
                         <div class="progress" style="height: 5px;flex-grow: 1;">
                             <div class="progress-bar" role="progressbar" style="width: {{ $percentage }}%;"></div>
@@ -22,8 +22,10 @@
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center mt-2">
-                        <a href="#" class="triggerModal btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Donate Now</a>
-                        @include('fund-donation.modals.donate-fund', ['donation' => $healthDonation, 'modalId' => $modalId])
+                        @if ($healthDonation->user_id !== auth()->id())
+                            <a href="#" class="triggerModal btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Donasi Sekarang</a>
+                            @include('fund-donation.modals.donate-fund', ['donation' => $healthDonation, 'modalId' => $modalId])
+                        @endif
                     </div>
                 </div>
             </div>

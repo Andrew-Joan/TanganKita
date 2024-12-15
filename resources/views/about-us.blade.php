@@ -7,22 +7,14 @@
 			<p class="text-muted">Setiap orang bisa memberikan perubahan yang besar!</p>
 		</section>
 
-		<section class="container my-5">
-			<div class="row g-4">
+		<section class="container my-3">
+			<div class="row g-4 d-flex justify-content-center">
 				<div class="col-md-4 text-center">
 					<div class="card p-4 border-0 shadow rounded-4">
 						<i class="fa-solid fa-hand-holding-dollar fa-4x text-primary mb-2 mt-3"></i>
 						<h5 class="fw-bold my-4 text-primary">Donasi</h5>
 						<p class="text-muted">Menyediakan bantuan berupa uang bagi orang yang membutuhkan.</p>
-						<a href="{{ route('fund-donation.index') }}" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Learn More</a>
-					</div>
-				</div>
-				<div class="col-md-4 text-center">
-					<div class="card p-4 border-0 shadow bg-primary rounded-4">
-						<i class="fa-solid fa-hand-holding-heart fa-4x text-light mb-2 mt-3"></i>
-						<h5 class="fw-bold my-4 text-light">Bantuan</h5>
-						<p class="text-light">Memberikan bantuan berupa barang pokok bagi orang yang membutuhkan.</p>
-						<a href="#" class="btn btn-outline-light mt-3 rounded-pill w-50 align-self-center">Learn More</a>
+						<a href="{{ route('fund-donation.index') }}" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Pelajari Lebih Lanjut</a>
 					</div>
 				</div>
 				<div class="col-md-4 text-center">
@@ -30,7 +22,7 @@
 						<i class="fa-solid fa-handshake-angle fa-4x text-primary mb-2 mt-3"></i>
 						<h5 class="fw-bold my-4 text-primary">Sukarelawan</h5>
 						<p class="text-muted">Mendukung secara langsung dengan tenaga serta waktu..</p>
-						<a href="{{ route('volunteer.index') }}" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Learn More</a>
+						<a href="{{ route('volunteer.index') }}" class="btn btn-outline-primary mt-3 rounded-pill w-50 align-self-center">Pelajari Lebih Lanjut</a>
 					</div>
 				</div>
 			</div>

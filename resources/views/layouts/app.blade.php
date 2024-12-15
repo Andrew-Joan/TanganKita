@@ -19,11 +19,9 @@
     <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 </head>
 <body>
-    <!-- Navbar -->
     @include('layouts.navbar')
     @include('layouts.alert-swal')
 
-    <!-- Main Content -->
     <main class="position-relative">
         @yield('content')
         <footer class="position-absolute bottom-0 start-50 translate-middle-x">

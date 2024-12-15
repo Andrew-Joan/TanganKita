@@ -36,7 +36,7 @@
 					</div>
 					<div class="row d-flex align-items-end">
 						<div class="col">
-							<label for="target" class="form-label text-dark">Maksimum Kapasitas (Jumlah Orang)</label>
+							<label for="target" class="form-label text-dark">Maksimum Kapasitas (Jumlah Relawan)</label>
 							<input id="number" class="form-control" name="target" value="{{ old('target', $ownedVolunteer->target) }}">
 						</div>
 						<div class="col">
@@ -52,7 +52,7 @@
 						@else
 							<img class="img-preview img-fluid mt-2 col-sm-5 d-block mx-auto d-block" id="update-image-volunteer-{{ $ownedVolunteer->id }}-preview">
 						@endif
-						</div>
+					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i> Batal</button>
 						<button type="submit" class="btn btn-success" id=""><i class="fa-regular fa-add pe-1"></i>Buat Kegiatan Relawan</button>

@@ -8,10 +8,8 @@
 
 @section('content')
 <div class="d-flex flex-column min-vh-100 container pb-5">
-    <!-- Main Content -->
     <main class="container py-5 flex-grow-1 d-flex justify-content-center align-items-center">
         <div class="row align-items-center">
-            <!-- Left Section -->
             <div class="col-md-6">
                 <h1 class="display-4 fw-bold text-dark quote">
                     Donasi adalah tentang membuat <span style="color: #1A8FE3;">perubahan.</span>
@@ -20,34 +18,31 @@
                     Setiap kontribusi, sekecil apa pun, memiliki kekuatan untuk mengubah hidup seseorang.
                     Dengan memberikan, kita menjadi bagian dari solusi dan harapan bagi mereka yang membutuhkan.
                 </p>
-                <button class="mt-3 btn btn-primary btn-lg">Donasi Sekarang</button>
+                <a href="{{ route('fund-donation.index') }}" class="mt-3 btn btn-primary btn-lg">Donasi Sekarang</a>
             </div>
 
-            <!-- Right Section -->
             <div class="col-md-5 offset-md-1">
                 <div class="shadow-lg card">
                     <div class="card-body" style="padding: 4rem">
                         <h2 class="mb-4 h5 fw-bold judul">Jumlah Donasi</h2>
-                        <!-- Toggle Buttons -->
+
                         <div class="mb-3 btn-group w-100" style="padding-bottom: 2rem">
-                            <button class="btn btn-primary">One-time</button>
-                            <button class="btn btn-outline-primary">Weekly</button>
+                            <button class="btn btn-primary">Sekali Donasi</button>
+                            <button class="btn btn-outline-primary">Donasi Mingguan</button>
                         </div>
-                        <!-- Donation Amount Options -->
+
                         <div class="row g-2" style="padding-bottom: 2rem">
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">500 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">1000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">2000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">5000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">10000 Ks</button></div>
-                            <div class="col-4 coldonate"><button class="btn btn-light w-100">50000 Ks</button></div>
+                            <div class="col-6 coldonate"><button class="btn btn-light w-100">Rp. 5000</button></div>
+                            <div class="col-6 coldonate"><button class="btn btn-light w-100">Rp. 10.000</button></div>
+                            <div class="col-6 coldonate"><button class="btn btn-light w-100">Rp. 20.000</button></div>
+                            <div class="col-6 coldonate"><button class="btn btn-light w-100">Rp. 50.000</button></div>
+                            <div class="col-6 coldonate"><button class="btn btn-light w-100">Rp. 100.000</button></div>
+                            <div class="col-6 coldonate"><button class="btn btn-light w-100">Rp. 200.000</button></div>
                         </div>
                         <div style="padding-bottom: 2rem">
-                            <input type="text" class="mt-3 form-control" placeholder="Custom Amount">
-                            <!-- Submit Button -->
-                            <button class="mt-3 btn btn-primary w-100">Donasi Sekarang</button>
+                            <input type="text" class="mt-3 form-control" placeholder="Donasi sesuai keinginan...">
+                            <a href="{{ route('fund-donation.index') }}" class="mt-3 btn btn-primary w-100">Donasi Sekarang</a href="{{ route('fund-donation.index') }}">
                         </div>
-                        <!-- Custom Amount Input -->
                     </div>
                 </div>
             </div>

@@ -16,26 +16,35 @@
                         <img src="{{ asset('images/volun.png') }}" alt="foto profile" class="rounded-circle border object-fit-cover w-50" style="height: 180px;">
                     </div>
                     <h4 class="mb-2 fw-bold">{{ $user->name }}</h4>
-                    <p class="text-muted"><i class="fas fa-calendar-alt"></i> {{ $user->date_of_birth->format('d F Y') }}</p>
+                    <p class="text-muted mb-2"><i class="fas fa-calendar-alt"></i> {{ $user->date_of_birth->format('d F Y') }}</p>
+                    <p class="text-muted"><i class="fa fa-envelope"></i> {{ $user->email }}</p>
                     <hr>
                     <div class="d-flex align-items-center justify-content-center mb-3">
                         <i class="fas fa-money-bill-wave text-success fs-4 me-3"></i>
                         <div>
-                            <p class="fw-bold mb-0">Donasi Uang</p>
-                            <p>Rp. {{ $amountDonated }}</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center mb-3">
-                        <i class="fas fa-box-open text-primary fs-4 me-3"></i>
-                        <div>
-                            <p class="fw-bold mb-0">Donasi Barang</p>
-                            <p>15 Item</p>
+                            <p class="fw-bold mb-0">Jumlah Kampanye Donasi yang dimiliki</p>
+                            <p>{{ $ownedFundDonationsCount }} Kampanye</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-center mb-3">
                         <i class="fas fa-users text-warning fs-4 me-3"></i>
                         <div>
-                            <p class="fw-bold mb-0">Volunteer</p>
+                            <p class="fw-bold mb-0">Jumlah Kegiatan Relawan yang dimiliki</p>
+                            <p>{{ $ownedVolunteersCount }} Kegiatan</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <i class="fas fa-money-bill-wave text-success fs-4 me-3"></i>
+                        <div>
+                            <p class="fw-bold mb-0">Jumlah Donasi yang dilakukan</p>
+                            <p>Rp. {{ $amountDonated }}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <i class="fas fa-users text-warning fs-4 me-3"></i>
+                        <div>
+                            <p class="fw-bold mb-0">Jumlah Kegiatan Relawan yang sudah diikuti</p>
                             <p>{{ $volunteerJoined }} Kegiatan</p>
                         </div>
                     </div>
@@ -59,9 +68,6 @@
             <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="pills-fund-donation-tab" data-bs-toggle="pill" data-bs-target="#pills-fund-donation" type="button" role="tab" aria-controls="pills-fund-donation" aria-selected="false">Donasi Uang</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-product-donation-tab" data-bs-toggle="pill" data-bs-target="#pills-product-donation" type="button" role="tab" aria-controls="pills-product-donation" aria-selected="false">Donasi Barang</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-volunteer-tab" data-bs-toggle="pill" data-bs-target="#pills-volunteer" type="button" role="tab" aria-controls="pills-volunteer" aria-selected="false">Kegiatan Relawan</a>
@@ -129,6 +135,23 @@
 <script>
     $(document).ready(function() {
        initDatatable();
+
+       if (performance.navigation.type === 1) {
+            localStorage.removeItem('activeTab');
+        }
+
+        $('#pills-tab a').on('click', function(e) {
+            localStorage.setItem('activeTab', $(this).attr('id'));
+        });
+
+        let activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#' + activeTab).tab('show');
+        }
+
+        if (window.location.search) {
+            history.replaceState({}, document.title, window.location.pathname);
+        }
     });
 
     function initDatatable() {

@@ -2,7 +2,6 @@
 
 @section('content')
 	<div class="d-flex flex-column min-vh-100 container pb-5">
-		<!-- Header -->
 		<section class="text-center py-5 bg-gradient">
 			<h1 class="fw-bold">Bergabunglah Sebagai <span class="text-primary">Sukarelawan</span></h1>
 			<p class="text-muted">Mari bersama kita membuat perubahan yang lebih besar.</p>
@@ -97,11 +96,11 @@
 								<img src="data:image/png;base64,{{ $volunteer->image }}" class="card-img-top rounded-top-4" alt="Kegiatan Pendidikan" style="height: 300px;">
 							@endif
 							<div class="card-body text-center">
-								<h5 class="fw-bold text-primary">{{ $volunteer->title }}</h5>
+								<h5 class="fw-bold">{{ $volunteer->title }}</h5>
 								<p class="text-muted">{!! Str::words($volunteer->description, 20); !!}</p>
 							</div>
 							<div class="card-footer bg-transparent border-0 text-center">
-								<a href="#" class="fw-bold text-primary">Baca Selengkapnya <i class="fa fa-arrow-right ps-1" aria-hidden="true"></i></a>
+								<a href="{{ route('volunteer.show', $volunteer->id) }}" class="fw-bold text-primary">Baca Selengkapnya <i class="fa fa-arrow-right ps-1" aria-hidden="true"></i></a>
 							</div>
 						</div>
 					</div>

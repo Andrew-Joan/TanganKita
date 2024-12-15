@@ -27,7 +27,7 @@
                     <p class="mb-1"><strong>Tanggal Buka:</strong> {{ $ownedFundDonation->start_date->format('d F Y') }}</p>
                     <p class="mb-2"><strong>Tanggal Berakhir:</strong> {{ $ownedFundDonation->end_date->format('d F Y') }}</p>
                     <div class="d-flex mb-0 gap-2">
-                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <a href="{{ route('fund-donation.show', $ownedFundDonation->id) }}" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         
                         <a href="#" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateFundDonation-{{ $ownedFundDonation->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         @include('fund-donation.modals.update', ['donation' => $ownedFundDonation])
@@ -44,6 +44,12 @@
             </div>
         </div>
     @endforeach
+
+    {{ 
+        $ownedFundDonations->appends([
+            'ownedVolunteers' => $ownedVolunteers->currentPage()
+        ])->links()
+    }}
 </div>
 
 <script>
@@ -51,7 +57,7 @@
         $('.deleteDonation').on('click', function(event) {
             event.preventDefault();
 
-            const form = $(this).closest('form'); // Get the closest form element
+            const form = $(this).closest('form');
 
             Swal.fire({
                 title: 'Hapus kampanye?',
