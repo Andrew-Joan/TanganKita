@@ -22,8 +22,10 @@
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center mt-2">
-                        <a href="#" class="triggerModal btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Donate Now</a>
-                        @include('fund-donation.modals.donate-fund', ['donation' => $healthDonation, 'modalId' => $modalId])
+                        @if ($healthDonation->user_id !== auth()->id())
+                            <a href="#" class="triggerModal btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Donasi Sekarang</a>
+                            @include('fund-donation.modals.donate-fund', ['donation' => $healthDonation, 'modalId' => $modalId])
+                        @endif
                     </div>
                 </div>
             </div>

@@ -47,9 +47,13 @@ Route::prefix('volunteer')
     ->controller(VolunteerController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/show/{volunteer}', 'show')->name('show');
+        Route::get('/show/{volunteer}/list-volunteer-applicants', 'listVolunteerApplicants')->name('list-volunteer-applicants');
         Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
         Route::patch('/update{volunteer}', 'update')->name('update')->middleware('auth.redirect');
         Route::delete('/destroy/{volunteer}', 'destroy')->name('destroy')->middleware('auth.redirect');
+        Route::patch('/apply-volunteer', 'applyVolunteer')->name('apply-volunteer')->middleware('auth.redirect');
+        Route::patch('/verify-applicant/{volunteerTransaction}', 'verifyApplicant')->name('verify-applicant')->middleware('auth.redirect');
     });
 
 Route::prefix('profile')

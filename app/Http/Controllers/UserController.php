@@ -27,12 +27,29 @@ class UserController extends Controller
                 ['status_id', 2]
             ])->count();
 
-        $ownedFundDonations = FundDonation::with('status')->where('user_id', $user->id)->get();
-        $ownedVolunteers = Volunteer::where('user_id', $user->id)->get();
+        $ownedFundDonations = FundDonation::with('status')->where('user_id', $user->id)->paginate(4, ['*'], 'ownedFundDonations');
+        $ownedVolunteers = Volunteer::where('user_id', $user->id)->paginate(4, ['*'], 'ownedVolunteers');
+
+        $ownedFundDonationsCount = FundDonation::where('user_id', $user->id)
+            ->whereNotIn('status_id', [1, 3])
+            ->count();
+
+        $ownedVolunteersCount = Volunteer::where('user_id', $user->id)
+            ->whereNotIn('status_id', [1, 3])
+            ->count();
 
         $categories = Category::all();
 
-        return view('profile.index', compact('user', 'amountDonated', 'volunteerJoined', 'ownedFundDonations', 'ownedVolunteers', 'categories'));
+        return view('profile.index', compact(
+            'user',
+            'amountDonated',
+            'volunteerJoined',
+            'ownedFundDonations',
+            'ownedVolunteers',
+            'ownedFundDonationsCount',
+            'ownedVolunteersCount',
+            'categories'
+        ));
     }
 
     public function listDonationHistory()
@@ -55,7 +72,7 @@ class UserController extends Controller
                 return 'Rp. ' . number_format($data->amount, 0, ',', '.');
             })
             ->addColumn('action', function ($data) {
-                return view('profile.component.__action', compact('data'))->render();
+                return view('profile.component.fund-donation.__action', compact('data'))->render();
             })
             ->make();
     }
@@ -80,7 +97,7 @@ class UserController extends Controller
                 return $data->created_at->format('d F Y');
             })
             ->addColumn('action', function ($data) {
-                return view('profile.component.__action', compact('data'))->render();
+                return view('profile.component.volunteer.__action', compact('data'))->render();
             })
             ->make();
     }

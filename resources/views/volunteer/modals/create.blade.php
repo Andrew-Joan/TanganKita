@@ -25,7 +25,7 @@
                         <trix-editor input="description-{{ $volunteerCategoryId }}"></trix-editor>
 					</div>
 					<div class="mb-2">
-						<label for="target" class="form-label text-dark">Maksimum Kapasitas (Jumlah Orang)</label>
+						<label for="target" class="form-label text-dark">Maksimum Kapasitas (Jumlah Relawan)</label>
                         <input type="number" class="form-control mx-auto" id="target" name="target" placeholder="Masukkan kapasitas anggota...">
 					</div>
 					<div class="row">

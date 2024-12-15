@@ -21,7 +21,7 @@
                 <div class="col">
                     <div class="row mb-4">
                         <div class="col">
-                            <div class="fw-bold">Nama Pembuat:</div>
+                            <div class="fw-bold">Nama Pengusul:</div>
                             <div>{{ $fundDonation->user->name }}</div>
                         </div>
                         <div class="col">
@@ -73,7 +73,7 @@
                                 </form>
                             </div>
                         @else
-                            <a href="#" class="triggerModal btn btn-outline-primary rounded-pill px-4" style="width:90%;" data-bs-toggle="modal" data-bs-target="#donate-fund-{{ $fundDonation->id }}">Donate Now</a>
+                            <a href="#" class="triggerModal btn btn-outline-primary rounded-pill px-4" style="width:90%;" data-bs-toggle="modal" data-bs-target="#donate-fund-{{ $fundDonation->id }}">Donasi Sekarang</a>
                             @include('fund-donation.modals.donate-fund-in-detail', ['donation' => $fundDonation])
                         @endif
                     </div>
@@ -93,7 +93,7 @@
             $('.deleteDonation').on('click', function(event) {
                 event.preventDefault();
 
-                const form = $(this).closest('form'); // Get the closest form element
+                const form = $(this).closest('form');
 
                 Swal.fire({
                     title: 'Hapus kampanye?',
