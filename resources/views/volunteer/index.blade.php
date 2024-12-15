@@ -2,7 +2,6 @@
 
 @section('content')
 	<div class="d-flex flex-column min-vh-100 container pb-5">
-		<!-- Header -->
 		<section class="text-center py-5 bg-gradient">
 			<h1 class="fw-bold">Bergabunglah Sebagai <span class="text-primary">Sukarelawan</span></h1>
 			<p class="text-muted">Mari bersama kita membuat perubahan yang lebih besar.</p>
