@@ -3,8 +3,8 @@
       "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.0" },
-        "app/api/**/*": {
-            "maxDuration": 15
+        "app/*": {
+            "maxDuration": 20
         }
     },
     "routes": [{
