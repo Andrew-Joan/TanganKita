@@ -7,7 +7,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\RedirectBackIfGuest;
 use App\Http\Controllers\VolunteerController;
+use App\Http\Middleware\RedirectBackIfNotAdmin;
 use App\Http\Controllers\FundDonationController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -35,10 +37,10 @@ Route::prefix('fund-donation')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/show/{fundDonation}', 'show')->name('show');
-        Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
-        Route::patch('/update{fundDonation}', 'update')->name('update')->middleware('auth.redirect');
-        Route::delete('/delete/{fundDonation}', 'destroy')->name('destroy')->middleware('auth.redirect');
-        Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware('auth.redirect');
+        Route::post('/store', 'store')->name('store')->middleware(RedirectBackIfGuest::class);
+        Route::patch('/update{fundDonation}', 'update')->name('update')->middleware(RedirectBackIfGuest::class);
+        Route::delete('/delete/{fundDonation}', 'destroy')->name('destroy')->middleware(RedirectBackIfGuest::class);
+        Route::patch('/donate-fund', 'donateFund')->name('donate-fund')->middleware(RedirectBackIfGuest::class);
     });
 
 
@@ -49,11 +51,11 @@ Route::prefix('volunteer')
         Route::get('/', 'index')->name('index');
         Route::get('/show/{volunteer}', 'show')->name('show');
         Route::get('/show/{volunteer}/list-volunteer-applicants', 'listVolunteerApplicants')->name('list-volunteer-applicants');
-        Route::post('/store', 'store')->name('store')->middleware('auth.redirect');
-        Route::patch('/update{volunteer}', 'update')->name('update')->middleware('auth.redirect');
-        Route::delete('/destroy/{volunteer}', 'destroy')->name('destroy')->middleware('auth.redirect');
-        Route::patch('/apply-volunteer', 'applyVolunteer')->name('apply-volunteer')->middleware('auth.redirect');
-        Route::patch('/verify-applicant/{volunteerTransaction}', 'verifyApplicant')->name('verify-applicant')->middleware('auth.redirect');
+        Route::post('/store', 'store')->name('store')->middleware(RedirectBackIfGuest::class);
+        Route::patch('/update{volunteer}', 'update')->name('update')->middleware(RedirectBackIfGuest::class);
+        Route::delete('/destroy/{volunteer}', 'destroy')->name('destroy')->middleware(RedirectBackIfGuest::class);
+        Route::patch('/apply-volunteer', 'applyVolunteer')->name('apply-volunteer')->middleware(RedirectBackIfGuest::class);
+        Route::patch('/verify-applicant/{volunteerTransaction}', 'verifyApplicant')->name('verify-applicant')->middleware(RedirectBackIfGuest::class);
     });
 
 Route::prefix('profile')
@@ -68,7 +70,7 @@ Route::prefix('profile')
 Route::prefix('admin')
     ->name('admin.')
     ->controller(AdminController::class)
-    ->middleware('auth.admin')
+    ->middleware(RedirectBackIfNotAdmin::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/list-donation-verification', 'listDonationVerification')->name('listDonationVerification');
